@@ -1,0 +1,60 @@
+﻿<Window x:Class="UR_Installation_Tool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UR_Installation_Tool"
+        mc:Ignorable="d"
+        Title="UR Installation Tool" Height="600" Width="Auto">
+    <Grid>
+    <StackPanel Orientation="Vertical" Margin="5,5,5,5">
+      
+    
+    
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+        <!--<CheckBox x:Name="CheckBoxVersion" Content="Is Polyscope Version 5.10 or newer?" VerticalAlignment="Center"/>-->
+        <Button Content="Load Installation" Height="50" Width="100" Click="Btn_Load_Installation" Margin="5,5,5,5"/>
+        <Button Content="Load TCP" Height="50" Width="100" Click="Btn_Load_Tcp" Margin="5,5,5,5"/>
+        <Button Content="Load Features" Height="50" Width="100" Click="Btn_Load_Features" Margin="5,5,5,5"/>
+        <Button Content="Build Installation" Height="50" Width="100" Click="Btn_Build_Installation" Margin="5,5,5,5"/>
+        <Button Content="Save Installation" Height="50" Width="100" Click="Btn_Save_Installation" Margin="5,5,5,5"/>        
+      </StackPanel>
+      <StackPanel  Orientation="Vertical" HorizontalAlignment="Center">
+        <ListView x:Name="ListViewTcpNames" ItemsSource="{Binding ListOfTcp}">
+          <ListView.View>
+            <GridView>
+              <GridViewColumn Header="TCP Name" Width="Auto" DisplayMemberBinding="{Binding Name}" />
+              <GridViewColumn Header="Id" Width="Auto" DisplayMemberBinding="{Binding Id}"/>
+              <GridViewColumn Header="Values" Width="Auto" DisplayMemberBinding="{Binding Values}" />
+            </GridView>
+          </ListView.View>
+        </ListView>
+        <ListView x:Name="ListViewPayloadNames" ItemsSource="{Binding ListOfPayloads}">
+            <ListView.View>
+              <GridView>
+                <GridViewColumn Header="Name" Width="Auto" DisplayMemberBinding="{Binding Name}" />
+                <GridViewColumn Header="Payload" Width="Auto" DisplayMemberBinding="{Binding Weight}"/>
+                <GridViewColumn Header="Values" Width="Auto" DisplayMemberBinding="{Binding Values}" />
+                <GridViewColumn Header="Inertia" Width="Auto" DisplayMemberBinding="{Binding Inertia}" />
+              </GridView>
+            </ListView.View>
+          </ListView>
+        <ListView x:Name="ListViewFeatureNamess" ItemsSource="{Binding ListOfFeatures}">
+          <ListView.View>
+            <GridView>
+              <GridViewColumn Header="Name" Width="Auto" DisplayMemberBinding="{Binding Name}" />
+              <GridViewColumn Header="XYZ" Width="Auto" DisplayMemberBinding="{Binding ValuesXYZ}"/>
+              <GridViewColumn Header="RXRYRZ" Width="Auto" DisplayMemberBinding="{Binding ValuesRXRYRZ}" />
+            </GridView>
+          </ListView.View>
+        </ListView>
+        <StackPanel Orientation="Horizontal">
+          <ListBox x:Name="InstallationOld" Width="800" Height="400" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+          <ListBox x:Name="InstallationNew" Width="800" Height="400" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+        </StackPanel>
+        
+      </StackPanel>      
+    </StackPanel>
+
+  </Grid>
+</Window>
